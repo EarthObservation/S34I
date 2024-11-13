@@ -1,15 +1,15 @@
 cff-version: 1.2.0
 message: "If you use this software, please cite it as below."
 authors:
-- family-names: "Cardoso-Fernandes"
-  given-names: "Joana"
-  orcid: "https://orcid.org/0000-0001-8265-3897"
-- family-names: "Carvalho"
-  given-names: "Morgana"
-  orcid: "https://orcid.org/0000-0001-9920-0886"
+  - family-names: "Cardoso-Fernandes"
+    given-names: "Joana"
+    orcid: "https://orcid.org/0000-0001-8265-3897"
+  - family-names: "Carvalho"
+    given-names: "Morgana"
+    orcid: "https://orcid.org/0000-0001-9920-0886"
   - family-names: "Azzalini"
-  given-names: "Antonio"
-  orcid: "https://orcid.org/0000-0003-1058-5463"
+    given-names: "Antonio"
+    orcid: "https://orcid.org/0000-0003-1058-5463"
 title: "S34I Earth observation technologies"
 date-released: 2024-09-10
 url: "https://github.com/EarthObservation/S34I/blob/main"
