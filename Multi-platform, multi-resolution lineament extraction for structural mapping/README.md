@@ -75,7 +75,7 @@ After running the script, export these **5 tables** for accuracy assessment:
 
 ---
 
-### **Step 2: Calculating Performance Metrics**  
+### **Step 2: Calculating Performance Metrics (./metrics.ipynb)**  
  ## Dependencies 
 - Open-source components are licensed under [MIT/Apache/GPL].  
 #### **Input Preparation**  
