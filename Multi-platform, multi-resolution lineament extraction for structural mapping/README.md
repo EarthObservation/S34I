@@ -40,7 +40,7 @@ The plugin requires **6 inputs**:
 
 4. **Sampling Points**  
    - **Description**: Point geometry layer containing sample points.  
-   - **Generation**: Use the **“Create Random Points”** tool in ArcGIS Pro, with the `clip_area` polygon as the **Constraining Feature Class**.  
+   - **Generation**: You can create the tool **“Create Random Points”** tool in ArcGIS Pro, with the `clip_area` polygon as the **Constraining Feature Class**. An equally spaced grid (in orthogonal directions) can also be used. 
    - **Note**: Name this file `random_points` and add it to the project’s home geodatabase.  
 
 <br>  
