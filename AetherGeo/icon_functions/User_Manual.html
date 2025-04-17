@@ -1,0 +1,113 @@
+<html>
+<head>
+    <title>AetherGeo User Manual</title>
+    <style>
+        body { font-family: Arial, sans-serif; line-height: 1.6; }
+        h1 { color: #ffffff; }
+        h2 { color: #ffffff; }
+        h3 { color: #ffffff; }
+        .function { margin-bottom: 20px; }
+        .warning { color: #cc0000; }
+        .note { color: #666; font-style: italic; }
+    </style>
+</head>
+<body>
+    <h1>AetherGeo User Manual</h1>
+    
+    <h2>Getting Started</h2>
+    <p>Welcome to the AetherGeo User Manual. This document provides an overview of the functions available in AetherGeo.</p>
+    <p>To start using Aether Geo the most basic function is to import an image, currently the following format are supported:</p>
+    <ul>
+        <li>TIF/TIFF/GeoTIFF</li>
+        <li>HDR in conjunction with DAT files</li>
+        <li>HE5 files</li>
+    </ul>
+    <p>If there seems to be a problem with the visualization, try running the Normalization function under the Preprocessing class, saving it and importing it.</p>
+    <p>After impoting an image, you can rigth click on top of the layer to check the associated metadata.</p>
+    <div>   </div>
+    <p>Another option is to import spectral libraries with function "Import Spectral Library" in the right side of the screen. Currently the following formats are supported:</p>
+    <ul>
+        <li>HDR in conjunction with SLI spectral library</li>
+        <li>TXT spectral library</li>
+    </ul>
+    <div>   </div>
+    <p>To continue with the analysis, it is recommended to use the preprocessing functions:</p>
+    <ul>
+        <li>Normalization: Performs pixel based normalization to fit the [0,1] interval</li>
+        <li>Attribute Wavelengths: Attributes the correct Wavelengths if they are muissing in the metadata</li>
+    </ul>
+    <p>From this point multiple option can be used under the following groups:</p>
+    <ul>
+        <li>2D plot: Opens a plot and enables the user to save a binary image composed based on manual selection of correlation between data associated with a given image.</li>
+        <li>Dimensionality reduction: Unsupervised techniques that aim to reduce dimensionality while maintaining most relevante information.</li>
+        <li>Endmember extraction: Functions that help the user to identify possible endmembers in the image</li>
+        <li>Spectral Unmixing: Functions that aim to identify the presence of a given material based on the similarity between each pixel spectrum and a input spectrum.</li>
+        <li>Clustering: Unsupervised techniques that perform classification based on spectral data.</li>
+        <li>Spectral libraries: Function that enable the user to import, visualize and compare spectral libraries and respective spectra data.</li>
+        <li>Others: Other relevante function that currently dont fit in a specific category.</li>
+    </ul>	
+    <p>For more information on each function, please refer to the specific sections below.</p>
+
+    <h2>Function Overview</h2>
+
+    <h3><b>Dimensionality Reduction</b></h3>
+
+    <p>Dimensionality reduction techniques are used to reduce the number of features in a dataset while preserving as much information as possible. This is particularly useful in hyperspectral imaging where the number of spectral bands can be very large.</p>
+    <p>The dimensionality reduction techniques included are the following:</p>
+    <ul>
+        <li>Principal Component Analysis (PCA)</li>
+        <li>Independent Component Analysis (ICA)</li>
+        <li>Non-negative Matrix Factorization (NMF)</li>
+    </ul>
+    <p>Each of these techniques has its own strengths and weaknesses, and the choice of which to use will depend on the specific characteristics of the data and the goals of the analysis.</p>
+    <p>For example, PCA is a linear technique that is effective for data that is approximately Gaussian distributed, while ICA is a non-linear technique that can be used to separate mixed signals. NMF is particularly useful for data that is non-negative (the case for spectral data) and can be used to extract parts-based representations.</p>
+    <p>To use these functions, select the desired input image, an optional mask, and the number of final components desired. After performing any function a graph describing the results is shown, after this the results can be saved as a new image.</p>
+    <div>   </div>
+    <h3><b>Endmember extraction</b></h3>
+
+    <p>Endmember extraction techniques are used to identify the purest spectral signatures in a hyperspectral image. These signatures can then be used to identify the presence of specific materials in the image.</p>
+    <div>   </div>
+    <p>It is recommended to start by performing Pixel Purity Index (PPI) either in the full image, or a mask already highlighting desired areas for regional studies.</p>
+    <p>This step aim to perform spatial dimensionality reduction aiming to ease the calculation required for the next step.</p>
+    <div>   </div>
+    <p>The "Generate Point Cloud" function creates a 3D visualization of the data.</p>
+    <p>It is assumed that the endmembers for a given dataset are represented as the boarders of the cloud.</p>
+    <p>The projection is based on a UMAP embedding of the data. Two images can be used as input, the main image is need as it provides the metadata information. The "reduction result" can be used to have the embedding be based on results from dimensionality reduction, but is not mandatory since UMAP already perform dimensionality reduction on the data.</p>
+    <p>It is recommended to use results from the PPI function as a mask, to reduce the amount of pixels, reducing computational load, and making identifying extreme ends of clouds easier.</p>
+    <p>After this save the results from any selection done in the point cloud as a Spectral Library.</p>
+
+    <h3><b>Spectral Unmixing</b></h3>
+    <p>Spectral unmixing techniques are used to identify the presence of specific materials in a hyperspectral image by comparing the spectral signatures of the materials to the spectral signatures of the pixels in the image.</p>
+    <p>These techniques are particularly useful for identifying materials that are present in small quantities or that are mixed with other materials.</p>
+    <p>Currently only Spectral Angle Mapper is available.</p>
+    <p>To use this function, select the desired input image, an optional mask, and an endmember from a spectral library to be used. After performing a new image can be saved where to each pixel is associated a value based on the angle distance between each pixel spectrum and endmember spectrum.</p>
+    <p>It is recommended to use 2D plot function to inspect results further. In this way the user can save a binary mask where selection was made based on setting a threshold to the previous results.</p>
+
+    <h3><b>Clustering</b></h3>
+    <p>Clustering techniques are used to group similar pixels in a hyperspectral image based on their spectral signatures. This is useful for identifying different materials or land cover types in the image.</p>
+    <p>Currently the following clustering techniques are available:</p>
+    <ul>
+        <li>K-Means Clustering</li>
+        <li>OPTICS Clustering</li>
+    </ul>
+    <p>To use these functions, select the desired input image, an optional mask, and respective necessary parameters. After performing any function a graph describing the results is shown, after this the results can be saved as a new image.</p>
+
+    <p>The "Mean Spectra From Cluster" can be used to save a spectral library composed of a mean spectrum for each new cluster generated.</p>
+
+    <h3><b>Spectral Libraries</b></h3>
+    <p>Spectral libraries are collections of spectral signatures that can be used to identify specific materials in a hyperspectral image. AetherGeo allows the user to import, visualize, and compare spectral libraries and respective spectra data.</p>
+    <p>The "Spectra Analyst" function enables to visualize the spectra associated with a given spectral library. The user can also select two distinct libraries to be visualized simultaneously. SAM can be performed to compare two spectra form either the same or two distinct libraries.</p>
+
+    <h3><b>Others</b></h3>
+    <p>Other relevant functions that currently don't fit in a specific category include:</p>
+    <ul>
+        <li>Band Ratios: Generates a image composed of a single layer from the results of an equation applied to data associated with bands from an image.</li>
+    </ul>
+
+    <h3><b>Final Notes</b></h3>
+    <p>If you have any problem with the program feel free to contact by sending an email to: aethergeoofficial@gmail.com or up202004466@up.pt</p>
+    <p>It is also important to highlight that this software is distributed as a free and open source project.</p>
+    <p>Would also like to highlight that making this software available was done because we trully believe it is beneficial for academic and non-academic communities.</p>
+    <p>It is recommended to check the GitHub page for updates and new features.</p>
+</body>
+</html>
